@@ -1,0 +1,26 @@
+{
+    "name": "radagast",
+    "version": "1.0.0",
+    "description": "epitech discord bot",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node public/app.js",
+        "dev": "nodemon public/app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/nicklamyeeman/RADAGAST.git"
+    },
+    "author": "Nick LAM YEE MAN",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/nicklamyeeman/RADAGAST/issues"
+    },
+    "homepage": "https://github.com/nicklamyeeman/RADAGAST#readme",
+    "dependencies": {
+        "axios": "^0.27.2",
+        "discord.js": "^14.3.0",
+        "dotenv": "^16.0.1"
+    }
+}
