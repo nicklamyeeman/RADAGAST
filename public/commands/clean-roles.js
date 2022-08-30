@@ -99,7 +99,7 @@ module.exports = {
           url: url,
           method: "get",
           headers: {
-            Cookie: "user=" + intraToken
+            Cookie: `user=${intraToken}`
           }
         })
         .then(res => {
