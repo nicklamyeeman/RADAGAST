@@ -138,7 +138,7 @@ Contributions are what make the open source community such an amazing place to b
 
 Nick LAM YEE MAN - [@nickauteen](https://twitter.com/nickauteen) - nick.lam-yee-man@epitech.eu
 
-Project Link: [https://github.com/nicklamyeeman/cpm-cppm](https://github.com/nicklamyeeman/RADAGAST)
+Project Link: [https://github.com/nicklamyeeman/RADAGAST](https://github.com/nicklamyeeman/RADAGAST)
 
 
 

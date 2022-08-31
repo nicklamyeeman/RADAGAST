@@ -27,7 +27,7 @@ module.exports = {
       method: "get"
     }).then(res => {
       const embed = new EmbedBuilder()
-    	.setColor(member.displayHexColor)
+    	.setColor(0x22CC22)
 	    .setTitle(`Joyeux anniversaire ${(member.nickname) ? member.nickname : member.user.username}! 🎉`)
       .setImage(res.data.data[Math.floor(Math.random() * 25)].images.fixed_height.url)
       .setTimestamp()
