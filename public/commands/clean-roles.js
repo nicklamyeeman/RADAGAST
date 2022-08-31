@@ -26,7 +26,7 @@ const transform_login = (login) => {
 };
 
 const fill_promotions = (all_courses) => {
-  const promotions = { 'HP': [], 'Tech1' : [], 'Tech2' : [], 'Tech3' : [], 'Tech4' : [], 'Tech5' : [], 'Alumni' : [], 'MSC' : [], 'Web@c' : [] };
+  const promotions = { 'HP': [], 'Tech1' : [], 'Tech2' : [], 'Tech3' : [], 'Tech4' : [], 'Tech5' : [], 'Alumni' : [], 'MSC' : [], 'Web@c' : [], 'Cod@c': [] };
   for (key in all_courses) {
     const semester_code = all_courses[key].semester_code.split('/');
     if (!all_courses[key] || !semester_code)
@@ -38,6 +38,8 @@ const fill_promotions = (all_courses) => {
         all_courses[key].logins.split(' ').map(login => promotions['MSC'].push(transform_login(login)));
       else if (all_courses[key].semester_owner === 'webacademie')
         all_courses[key].logins.split(' ').map(login => promotions['Web@c'].push(transform_login(login)));
+      else if (all_courses[key].semester_owner === 'Code-And-Go' || all_courses[key].semester_owner === 'Web-And-Go' || all_courses[key].semester_owner === 'Dev-And-Go')
+        all_courses[key].logins.split(' ').map(login => promotions['Cod@c'].push(transform_login(login)));
       else {
         if (all_courses[key].semester_owner === 'bachelor') {
           if (all_courses[key].semester_code.slice(0, 2) === 'B1')
@@ -89,9 +91,11 @@ module.exports = {
     const all_promise = [];
     return interaction.reply({content: `Nettoyage du serveur en cours...\n`, ephemeral: true}).then(() => {
       const intraToken = (interaction.options.getString('intra-token')) ? interaction.options.getString('intra-token') : process.env.INTRA_TOKEN;
+      const city = ['BAR', 'BER', 'BDX', 'RUN', 'LIL', 'LYN', 'MAR', 'MPL', 'MLN', 'MLH', 'NCY', 'NAN', 'NCE', 'PAR', 'REN', 'STG', 'TLS', 'NYC', 'CHQ', 'DAL', 'COT', 'BRU', 'TIR']
+        .find(city => interaction.guild.members.me.roles.cache.find(role => role.name === city));
       const academicyear = new Date().getFullYear();
-      [ `https://intra.epitech.eu/admin/promo/?school=&location=FR%2FRUN&scolaryear=${academicyear-1}&format=json`,
-        `https://intra.epitech.eu/admin/promo/?school=&location=FR%2FRUN&scolaryear=${academicyear}&format=json`,
+      [ `https://intra.epitech.eu/admin/promo/?school=&location=FR%2F${city}&scolaryear=${academicyear-1}&format=json`,
+        `https://intra.epitech.eu/admin/promo/?school=&location=FR%2F${city}&scolaryear=${academicyear}&format=json`,
         `https://intra.epitech.eu/admin/promo/?school=&location=FR%2FPAR&scolaryear=${academicyear-1}&format=json`,
         `https://intra.epitech.eu/admin/promo/?school=&location=FR%2FPAR&scolaryear=${academicyear}&format=json`,
       ].forEach(url => {
@@ -116,7 +120,7 @@ module.exports = {
                 } else {
                   const new_role = interaction.guild.roles.cache.find(r => r.name === promo);
                   if (new_role !== undefined) {
-                    ['Tech1', 'Tech2', 'Tech3', 'Tech3', 'Tech4', 'Tech5', 'Alumni', 'MSC', 'Web@c'].forEach(role => {
+                    ['Tech1', 'Tech2', 'Tech3', 'Tech3', 'Tech4', 'Tech5', 'Alumni', 'MSC', 'Web@c', 'Cod@c'].forEach(role => {
                       if ((to_delete_role = member.roles.cache.find(r => r.name === role)) !== undefined && to_delete_role.name !== new_role.name)
                         all_promise.push(member.roles.remove(to_delete_role).then(console.log(`${member.nickname} perd le rôle: ${to_delete_role.name}`)));
                     });

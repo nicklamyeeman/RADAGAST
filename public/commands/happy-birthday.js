@@ -26,9 +26,8 @@ module.exports = {
       url: `https://api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_ID}&q=Happy+Birthday&limit=25&offset=0&rating=g&lang=en`,
       method: "get"
     }).then(res => {
-      console.log(res.data.data[0])
       const embed = new EmbedBuilder()
-    	.setColor(0x22CC22)
+    	.setColor(member.displayHexColor)
 	    .setTitle(`Joyeux anniversaire ${(member.nickname) ? member.nickname : member.user.username}! 🎉`)
       .setImage(res.data.data[Math.floor(Math.random() * 25)].images.fixed_height.url)
       .setTimestamp()

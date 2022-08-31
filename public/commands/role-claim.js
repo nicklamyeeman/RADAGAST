@@ -33,6 +33,7 @@ module.exports = {
             { label: 'Tech 5', value: 'Tech5' },
             { label: 'Alumni', value: 'Alumni' },
             { label: 'MSC', value: 'MSC' },
+            { label: 'Coding Academy', value: 'Cod@c' },
             { label: 'Web@cademie', value: 'Web@c' })
       );
       return interaction.reply({ content: 'Sélectionne ta promotion', components: [row], ephemeral: true});
@@ -45,7 +46,7 @@ module.exports = {
     if (interaction.member.roles.cache.find(r => r.name === role_to_set) !== undefined)
       return interaction.reply({content: `Vous avez déjà ce rôle!`, ephemeral: true});
 
-    ['Tech1', 'Tech2', 'Tech3', 'Tech3', 'Tech4', 'Tech5', 'Alumni', 'MSC', 'Web@c'].forEach(role => {
+    ['Tech1', 'Tech2', 'Tech3', 'Tech3', 'Tech4', 'Tech5', 'Alumni', 'MSC', 'Cod@c', 'Web@c'].forEach(role => {
       if (to_delete_role = interaction.member.roles.cache.find(r => r.name === role))
         interaction.member.roles.remove(to_delete_role);
     });
